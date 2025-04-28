@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "live-server src"
+  },
+  "keywords": [],
+  "author": "Alireza Safaeirad <frontendmonster@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.9.0",
+  "devDependencies": {
+    "@fullstacksjs/eslint-config": "12.1.1",
+    "eslint": "9.25.1",
+    "live-server": "1.2.2",
+    "prettier": "3.5.3"
+  }
+}
