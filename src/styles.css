@@ -1,0 +1,110 @@
+@layer base {
+  :root {
+    --color-bg: #c6c6c6;
+    --color-fg: #000000;
+    --color-light: 255 255 255;
+    --font-serif: 'Labrada', serif;
+    --font-sans-serif: 'Philosopher', sans-serif;
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-size: 0.875rem;
+
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
+  }
+
+  body,
+  h1,
+  p {
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+@layer bg {
+  .deer {
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    left: 40px;
+    top: 10px;
+    width: 100vw;
+    z-index: -1;
+
+    @media (min-width: 600px) {
+      left: 15vw;
+      width: clamp(500px, 40vw, 600px);
+    }
+
+    @media (min-width: 800px) {
+      left: 25vw;
+    }
+  }
+
+  .glow {
+    filter: drop-shadow(0 0 1px rgb(var(--color-light) / 90%))
+      drop-shadow(0 0 2px rgb(var(--color-light) / 80%))
+      drop-shadow(0 0 7px rgb(var(--color-light) / 70%))
+      drop-shadow(0 0 15px rgb(var(--color-light) / 60%))
+      drop-shadow(0 0 25px rgb(var(--color-light) / 50%))
+      drop-shadow(0 0 45px rgb(var(--color-light) / 40%));
+  }
+
+  .deer-head {
+    position: absolute;
+    top: 26%;
+    left: 50.5%;
+  }
+
+  .horn {
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background-color: white;
+  }
+
+  .horn-left {
+    rotate: 36deg;
+    left: 42%;
+    top: 24%;
+  }
+
+  .horn-right {
+    rotate: -45deg;
+    left: 60%;
+    top: 24%;
+  }
+
+  .man {
+    transition: all 0.2s ease-in-out;
+    position: fixed;
+    top: 40vh;
+    width: 300px;
+    left: 40vw;
+
+    @media (min-width: 600px) {
+      width: clamp(300px, 30vw, 400px);
+      top: clamp(570px, 40vw, 600px);
+    }
+  }
+}
+
+@layer content {
+  .container {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .heading {
+    font-weight: normal;
+    font-size: clamp(2.5rem, 16vw, 16rem);
+  }
+}
