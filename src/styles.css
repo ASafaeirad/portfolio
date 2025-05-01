@@ -35,25 +35,29 @@
     --pointer-y: 0px;
   }
 
+  .container {
+    height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    justify-content: center;
+  }
+
   .deer {
-    --deer-left: 40px;
-    --deer-top: 10px;
-
-    transition: width 0.2s linear;
-    position: fixed;
-    width: 100vw;
+    position: relative;
     z-index: -1;
-    left: calc(var(--deer-left) - var(--pointer-x));
-    top: calc(var(--deer-top) - var(--pointer-y));
+
+    grid-column: 1;
+    grid-row: 1;
+
+    translate: calc(var(--pointer-x) - 100px) calc(var(--pointer-y) - 100px);
     filter: blur(var(--blur-deer));
+    width: 90vmin;
+    max-width: 600px;
 
-    @media (min-width: 600px) {
-      --deer-left: 15vw;
-      width: clamp(500px, 40vw, 600px);
-    }
-
-    @media (min-width: 800px) {
-      --deer-left: 25vw;
+    @media (min-width: 510px) {
+      width: 65vmin;
     }
   }
 
@@ -68,8 +72,21 @@
 
   .deer-head {
     position: absolute;
-    top: 26%;
-    left: 50.5%;
+    scale: 0.6;
+    top: 25%;
+    left: 48%;
+
+    @media (min-width: 600px) {
+      scale: 0.9;
+      top: 26%;
+      left: 50%;
+    }
+
+    @media (min-width: 800px) {
+      scale: 1;
+      top: 26%;
+      left: 50%;
+    }
   }
 
   .horn {
@@ -82,43 +99,34 @@
   .horn-left {
     rotate: 36deg;
     left: 42%;
-    top: 24%;
+    top: 24.5%;
   }
 
   .horn-right {
     rotate: -45deg;
-    left: 60%;
-    top: 24%;
+    left: 58%;
+    top: 24.5%;
+
+    @media (min-width: 600px) {
+      left: 60%;
+    }
   }
 
   .man {
-    --man-left: 40vw;
-    --man-top: 40vh;
+    grid-column: 1;
+    grid-row: 1;
     filter: blur(var(--blur-man));
-
-    position: fixed;
-    top: calc(var(--man-top) + var(--pointer-y));
-    width: 300px;
-    left: calc(var(--man-left) + var(--pointer-x));
-
-    @media (min-width: 600px) {
-      width: clamp(300px, 30vw, 400px);
-      --man-top: clamp(570px, 40vh, 600px);
-    }
-  }
-}
-
-@layer content {
-  .container {
-    height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    width: 400px;
+    translate: calc(150px + var(--pointer-x) * -1)
+      calc(200px + var(--pointer-y) * -1);
   }
 
   .heading {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
     font-weight: normal;
-    font-size: clamp(2.5rem, 16vw, 16rem);
+    translate: calc(var(--pointer-x) / 2) calc(var(--pointer-y) / 2);
+    font-size: clamp(2.5rem, 12vw, 14rem);
   }
 }
