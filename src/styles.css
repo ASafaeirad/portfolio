@@ -28,21 +28,32 @@
 }
 
 @layer bg {
+  body {
+    --blur-deer: 0px;
+    --blur-man: 0px;
+    --pointer-x: 0px;
+    --pointer-y: 0px;
+  }
+
   .deer {
-    transition: all 0.2s ease-in-out;
+    --deer-left: 40px;
+    --deer-top: 10px;
+
+    transition: width 0.2s linear;
     position: fixed;
-    left: 40px;
-    top: 10px;
     width: 100vw;
     z-index: -1;
+    left: calc(var(--deer-left) - var(--pointer-x));
+    top: calc(var(--deer-top) - var(--pointer-y));
+    filter: blur(var(--blur-deer));
 
     @media (min-width: 600px) {
-      left: 15vw;
+      --deer-left: 15vw;
       width: clamp(500px, 40vw, 600px);
     }
 
     @media (min-width: 800px) {
-      left: 25vw;
+      --deer-left: 25vw;
     }
   }
 
@@ -81,15 +92,18 @@
   }
 
   .man {
-    transition: all 0.2s ease-in-out;
+    --man-left: 40vw;
+    --man-top: 40vh;
+    filter: blur(var(--blur-man));
+
     position: fixed;
-    top: 40vh;
+    top: calc(var(--man-top) + var(--pointer-y));
     width: 300px;
-    left: 40vw;
+    left: calc(var(--man-left) + var(--pointer-x));
 
     @media (min-width: 600px) {
       width: clamp(300px, 30vw, 400px);
-      top: clamp(570px, 40vw, 600px);
+      --man-top: clamp(570px, 40vh, 600px);
     }
   }
 }
