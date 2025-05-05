@@ -5,6 +5,12 @@
     --color-light: 255 255 255;
     --font-serif: 'Labrada', serif;
     --font-sans-serif: 'Philosopher', sans-serif;
+    --glow-shadow: drop-shadow(0 0 1px rgb(var(--color-light) / 90%))
+      drop-shadow(0 0 2px rgb(var(--color-light) / 80%))
+      drop-shadow(0 0 7px rgb(var(--color-light) / 70%))
+      drop-shadow(0 0 15px rgb(var(--color-light) / 60%))
+      drop-shadow(0 0 25px rgb(var(--color-light) / 50%))
+      drop-shadow(0 0 45px rgb(var(--color-light) / 40%));
   }
 
   html {
@@ -61,20 +67,12 @@
     }
   }
 
-  .glow {
-    filter: drop-shadow(0 0 1px rgb(var(--color-light) / 90%))
-      drop-shadow(0 0 2px rgb(var(--color-light) / 80%))
-      drop-shadow(0 0 7px rgb(var(--color-light) / 70%))
-      drop-shadow(0 0 15px rgb(var(--color-light) / 60%))
-      drop-shadow(0 0 25px rgb(var(--color-light) / 50%))
-      drop-shadow(0 0 45px rgb(var(--color-light) / 40%));
-  }
-
   .deer-head {
     position: absolute;
     scale: 0.6;
     top: 25%;
     left: 48%;
+    filter: var(--glow-shadow);
 
     @media (min-width: 600px) {
       scale: 0.9;
@@ -89,27 +87,26 @@
     }
   }
 
-  .horn {
+  .deer::before,
+  .deer::after {
+    content: '';
     position: absolute;
     width: 25px;
     height: 2px;
     background-color: white;
+    filter: var(--glow-shadow);
   }
 
-  .horn-left {
+  .deer::before {
     rotate: 36deg;
     left: 42%;
     top: 24.5%;
   }
 
-  .horn-right {
+  .deer::after {
     rotate: -45deg;
-    left: 58%;
+    left: 60%;
     top: 24.5%;
-
-    @media (min-width: 600px) {
-      left: 60%;
-    }
   }
 
   .man {
