@@ -43,6 +43,8 @@
 
   .container {
     height: 100dvh;
+    width: 100dvw;
+    overflow: clip;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -57,13 +59,14 @@
     grid-column: 1;
     grid-row: 1;
 
-    translate: calc(var(--pointer-x) - 100px) calc(var(--pointer-y) - 100px);
+    translate: calc(var(--pointer-x) - 80px) calc(var(--pointer-y) - 100px);
     filter: blur(var(--blur-deer));
     width: 90vmin;
     max-width: 600px;
 
     @media (min-width: 510px) {
       width: 65vmin;
+      translate: calc(var(--pointer-x) - 100px) calc(var(--pointer-y) - 100px);
     }
   }
 
@@ -105,17 +108,27 @@
 
   .deer::after {
     rotate: -45deg;
-    left: 60%;
+    left: 59%;
     top: 24.5%;
+
+    @media (min-width: 510px) {
+      left: 60%;
+    }
   }
 
   .man {
     grid-column: 1;
     grid-row: 1;
     filter: blur(var(--blur-man));
-    width: 400px;
-    translate: calc(150px + var(--pointer-x) * -1)
-      calc(200px + var(--pointer-y) * -1);
+    translate: calc(80px + var(--pointer-x) * -1)
+      calc(100px + var(--pointer-y) * -1);
+    width: 300px;
+
+    @media (min-width: 510px) {
+      width: 400px;
+      translate: calc(150px + var(--pointer-x) * -1)
+        calc(200px + var(--pointer-y) * -1);
+    }
   }
 
   .heading {
