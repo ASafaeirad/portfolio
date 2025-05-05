@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Portfolio website",
   "scripts": {
-    "dev": "live-server --host=0.0.0.0 src"
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "keywords": [],
   "author": "Alireza Safaeirad <frontendmonster@gmail.com>",
@@ -11,8 +13,12 @@
   "packageManager": "pnpm@10.9.0",
   "devDependencies": {
     "@fullstacksjs/eslint-config": "12.1.1",
+    "@vitejs/plugin-basic-ssl": "2.0.0",
     "eslint": "9.25.1",
-    "live-server": "1.2.2",
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "vite": "6.3.5"
+  },
+  "dependencies": {
+    "@fullstacksjs/toolbox": "4.17.0"
   }
 }
