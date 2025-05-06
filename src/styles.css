@@ -8,28 +8,6 @@
 
     --color-shadow: hsl(0 0% 100%);
     --color-shadow-2: hsl(130deg 100% 70%);
-    --color-shadow-3: hsl(130deg 100% 70% / 30%);
-
-    --color-deer-glow: hsl(130deg 40% 90%);
-
-    --deer-shadow: drop-shadow(0 0 2px rgb(255 255 255 / 80%))
-      drop-shadow(
-        0 0 5px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
-      )
-      drop-shadow(
-        0 0 10px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
-      )
-      drop-shadow(
-        0 0 20px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
-      )
-      drop-shadow(
-        0 0 30px color-mix(in hsl, var(--color-shadow-2) 40%, transparent)
-      )
-      drop-shadow(
-        0 0 40px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
-      )
-      drop-shadow(0 100px 70px var(--color-shadow-2))
-      drop-shadow(0 0 45px var(--color-deer-glow));
   }
 
   html {
@@ -83,59 +61,13 @@
     width: 90vmin;
     max-width: 600px;
 
+    img {
+      animation: deer-glow 3s infinite alternate ease-in-out;
+    }
+
     @media (min-width: 510px) {
       width: 65vmin;
       translate: calc(var(--pointer-x) - 100px) calc(var(--pointer-y) - 100px);
-    }
-  }
-
-  .deer-head {
-    position: absolute;
-    scale: 0.6;
-    top: 25%;
-    left: 48%;
-    filter: var(--deer-shadow);
-    color: white;
-    opacity: 0.9;
-    animation: deer-glow 3s infinite alternate ease-in-out;
-    will-change: filter;
-
-    @media (min-width: 600px) {
-      scale: 0.9;
-      top: 26%;
-      left: 50%;
-    }
-
-    @media (min-width: 800px) {
-      scale: 1;
-      top: 26%;
-      left: 50%;
-    }
-  }
-
-  .deer::before,
-  .deer::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 2px;
-    background-color: white;
-    filter: var(--deer-shadow);
-  }
-
-  .deer::before {
-    rotate: 36deg;
-    left: 42%;
-    top: 24.5%;
-  }
-
-  .deer::after {
-    rotate: -45deg;
-    left: 59%;
-    top: 24.5%;
-
-    @media (min-width: 510px) {
-      left: 60%;
     }
   }
 
@@ -173,7 +105,8 @@
       0 0 5px #fff,
       -10px 0 60px var(--color-shadow),
       10px 0 60px var(--color-shadow-2),
-      100px 100px 200px 70px var(--color-shadow-3);
+      100px 100px 200px 70px
+        color-mix(in hsl, var(--color-shadow-2) 40%, transparent);
 
     animation: move 3s infinite alternate ease-in-out;
 
@@ -184,11 +117,11 @@
 
   @keyframes deer-glow {
     0% {
-      filter: hue-rotate(-40deg) var(--deer-shadow);
+      filter: hue-rotate(-40deg);
     }
 
     100% {
-      filter: hue-rotate(40deg) var(--deer-shadow);
+      filter: hue-rotate(40deg);
     }
   }
 
@@ -232,6 +165,24 @@
       font-weight: 600;
       color: var(--color-fg);
       text-decoration: none;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1ch;
+        height: 4px;
+        background-color: currentColor;
+        bottom: -3px;
+        left: 2px;
+        transform-origin: left;
+        transition: transform 0.3s ease-in-out;
+        transform: scaleX(0);
+      }
+
+      &:hover::before {
+        transform: scaleX(1);
+      }
     }
 
     &:has(a:hover) a:not(:hover) {
