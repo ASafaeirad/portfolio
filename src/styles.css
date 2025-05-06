@@ -148,20 +148,20 @@
   }
 
   .heading {
-    font-size: clamp(2.5rem, 10vw, 14rem);
+    font-size: clamp(2.5rem, 15vw, 11rem);
     font-weight: normal;
   }
 
   .description {
     padding: 1rem 0;
     font-family: var(--font-sans-serif);
-    font-size: clamp(1rem, 4vw, 2.4rem);
     display: flex;
     gap: 1rem;
     flex-direction: column;
     align-items: center;
 
     a {
+      font-size: clamp(1.5rem, 5vw, 3rem);
       font-weight: 600;
       color: var(--color-fg);
       text-decoration: none;
