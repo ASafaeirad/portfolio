@@ -4,13 +4,32 @@
     --color-fg: #000000;
     --color-light: 255 255 255;
     --font-serif: 'Labrada', serif;
-    --font-sans-serif: 'Philosopher', sans-serif;
-    --glow-shadow: drop-shadow(0 0 1px rgb(var(--color-light) / 90%))
-      drop-shadow(0 0 2px rgb(var(--color-light) / 80%))
-      drop-shadow(0 0 7px rgb(var(--color-light) / 70%))
-      drop-shadow(0 0 15px rgb(var(--color-light) / 60%))
-      drop-shadow(0 0 25px rgb(var(--color-light) / 50%))
-      drop-shadow(0 0 45px rgb(var(--color-light) / 40%));
+    --font-sans-serif: 'Inter', sans-serif;
+
+    --color-shadow: hsl(0 0% 100%);
+    --color-shadow-2: hsl(130deg 100% 70%);
+    --color-shadow-3: hsl(130deg 100% 70% / 30%);
+
+    --color-deer-glow: hsl(130deg 40% 90%);
+
+    --deer-shadow: drop-shadow(0 0 2px rgb(255 255 255 / 80%))
+      drop-shadow(
+        0 0 5px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
+      )
+      drop-shadow(
+        0 0 10px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
+      )
+      drop-shadow(
+        0 0 20px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
+      )
+      drop-shadow(
+        0 0 30px color-mix(in hsl, var(--color-shadow-2) 40%, transparent)
+      )
+      drop-shadow(
+        0 0 40px color-mix(in hsl, var(--color-deer-glow) 80%, transparent)
+      )
+      drop-shadow(0 100px 70px var(--color-shadow-2))
+      drop-shadow(0 0 45px var(--color-deer-glow));
   }
 
   html {
@@ -75,7 +94,11 @@
     scale: 0.6;
     top: 25%;
     left: 48%;
-    filter: var(--glow-shadow);
+    filter: var(--deer-shadow);
+    color: white;
+    opacity: 0.9;
+    animation: deer-glow 3s infinite alternate ease-in-out;
+    will-change: filter;
 
     @media (min-width: 600px) {
       scale: 0.9;
@@ -97,7 +120,7 @@
     width: 25px;
     height: 2px;
     background-color: white;
-    filter: var(--glow-shadow);
+    filter: var(--deer-shadow);
   }
 
   .deer::before {
@@ -117,9 +140,11 @@
   }
 
   .man {
+    position: relative;
     grid-column: 1;
     grid-row: 1;
     filter: blur(var(--blur-man));
+    will-change: filter;
     translate: calc(80px + var(--pointer-x) * -1)
       calc(100px + var(--pointer-y) * -1);
     width: 300px;
@@ -131,12 +156,87 @@
     }
   }
 
-  .heading {
+  .man::after {
+    display: inline-block;
+    content: '';
+    position: absolute;
+    width: 35px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: white;
+    left: 14%;
+    top: 10.5%;
+    box-shadow:
+      inset 0 0 10px #fff,
+      inset 10px 0 30px var(--color-shadow),
+      inset -10px 0 30px var(--color-shadow-2),
+      0 0 5px #fff,
+      -10px 0 60px var(--color-shadow),
+      10px 0 60px var(--color-shadow-2),
+      100px 100px 200px 70px var(--color-shadow-3);
+
+    animation: move 3s infinite alternate ease-in-out;
+
+    @media (min-width: 510px) {
+      width: 45px;
+    }
+  }
+
+  @keyframes deer-glow {
+    0% {
+      filter: hue-rotate(-40deg) var(--deer-shadow);
+    }
+
+    100% {
+      filter: hue-rotate(40deg) var(--deer-shadow);
+    }
+  }
+
+  @keyframes move {
+    0% {
+      scale: 1;
+      filter: blur(1px) hue-rotate(-40deg);
+    }
+
+    100% {
+      scale: 0.9;
+      filter: blur(1px) hue-rotate(40deg);
+    }
+  }
+}
+
+@layer content {
+  .content {
     grid-column: 1;
     grid-row: 1;
-    text-align: center;
-    font-weight: normal;
+    z-index: 1;
+    opacity: 0.8;
     translate: calc(var(--pointer-x) / 2) calc(var(--pointer-y) / 2);
-    font-size: clamp(2.5rem, 12vw, 14rem);
+  }
+
+  .heading {
+    font-size: clamp(2.5rem, 10vw, 14rem);
+    font-weight: normal;
+  }
+
+  .description {
+    padding: 1rem 0;
+    font-family: var(--font-sans-serif);
+    font-size: clamp(1rem, 4vw, 2.4rem);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      font-weight: 600;
+      color: var(--color-fg);
+      text-decoration: none;
+    }
+
+    &:has(a:hover) a:not(:hover) {
+      filter: blur(1px);
+      opacity: 0.7;
+    }
   }
 }
