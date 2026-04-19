@@ -3,8 +3,8 @@
     --color-bg: #c6c6c6;
     --color-fg: #000000;
     --color-light: 255 255 255;
-    --font-serif: 'Labrada', serif;
-    --font-sans-serif: 'Inter', sans-serif;
+    --font-serif: "Labrada", serif;
+    --font-sans-serif: "Inter", sans-serif;
 
     --color-shadow: hsl(0 0% 100%);
     --color-shadow-2: hsl(130deg 100% 70%);
@@ -77,20 +77,19 @@
     grid-row: 1;
     filter: blur(var(--blur-man));
     will-change: filter;
-    translate: calc(80px + var(--pointer-x) * -1)
-      calc(100px + var(--pointer-y) * -1);
+    translate: calc(80px + var(--pointer-x) * -1) calc(100px + var(--pointer-y) * -1);
     width: 300px;
+    pointer-events: none;
 
     @media (min-width: 510px) {
       width: 400px;
-      translate: calc(150px + var(--pointer-x) * -1)
-        calc(200px + var(--pointer-y) * -1);
+      translate: calc(150px + var(--pointer-x) * -1) calc(200px + var(--pointer-y) * -1);
     }
   }
 
   .man::after {
     display: inline-block;
-    content: '';
+    content: "";
     position: absolute;
     width: 35px;
     aspect-ratio: 1;
@@ -105,8 +104,7 @@
       0 0 5px #fff,
       -10px 0 60px var(--color-shadow),
       10px 0 60px var(--color-shadow-2),
-      100px 100px 200px 70px
-        color-mix(in hsl, var(--color-shadow-2) 40%, transparent);
+      100px 100px 200px 70px color-mix(in hsl, var(--color-shadow-2) 40%, transparent);
 
     animation: move 3s infinite alternate ease-in-out;
 
@@ -142,7 +140,6 @@
   .content {
     grid-column: 1;
     grid-row: 1;
-    z-index: 1;
     opacity: 0.8;
     translate: calc(var(--pointer-x) / 2) calc(var(--pointer-y) / 2);
   }
@@ -168,7 +165,7 @@
       position: relative;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 1ch;
         height: 4px;
