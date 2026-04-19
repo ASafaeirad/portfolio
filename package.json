@@ -12,13 +12,13 @@
   "license": "MIT",
   "packageManager": "pnpm@10.9.0",
   "devDependencies": {
-    "@fullstacksjs/eslint-config": "12.1.1",
-    "@vitejs/plugin-basic-ssl": "2.0.0",
-    "eslint": "9.25.1",
-    "prettier": "3.5.3",
-    "vite": "6.3.5"
+    "@fullstacksjs/eslint-config": "14.2.0",
+    "@vitejs/plugin-basic-ssl": "2.3.0",
+    "eslint": "10.2.1",
+    "prettier": "3.8.3",
+    "vite": "8.0.8"
   },
   "dependencies": {
-    "@fullstacksjs/toolbox": "4.17.0"
+    "@fullstacksjs/toolbox": "4.22.0"
   }
 }

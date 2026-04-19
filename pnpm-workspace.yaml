@@ -2,3 +2,4 @@ savePrefix: ''
 
 onlyBuiltDependencies:
   - esbuild
+  - unrs-resolver
