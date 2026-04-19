@@ -1,7 +1,7 @@
 @layer base {
   :root {
     --color-bg: #c6c6c6;
-    --color-fg: #000000;
+    --color-fg: hsl(0 0% 8%);
     --color-light: 255 255 255;
     --font-serif: "Labrada", serif;
     --font-sans-serif: "Inter", sans-serif;
@@ -40,11 +40,7 @@
 
   .container {
     height: 100dvh;
-    width: 100dvw;
-    overflow: clip;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
     place-items: center;
     justify-content: center;
   }
@@ -136,17 +132,41 @@
   }
 }
 
+@keyframes squiggly {
+  0% {
+    filter: url("#squiggly-0");
+  }
+  5% {
+    filter: url("#squiggly-1");
+  }
+  10% {
+    filter: url("#squiggly-2");
+  }
+  15% {
+    filter: url("#squiggly-3");
+  }
+  20% {
+    filter: url("#squiggly-4");
+  }
+  21% {
+    filter: none;
+  }
+  100% {
+    filter: none;
+  }
+}
+
 @layer content {
   .content {
     grid-column: 1;
     grid-row: 1;
-    opacity: 0.8;
     translate: calc(var(--pointer-x) / 2) calc(var(--pointer-y) / 2);
   }
 
   .heading {
     font-size: clamp(2.5rem, 15vw, 11rem);
     font-weight: normal;
+    animation: squiggly 1.5s linear infinite;
   }
 
   .description {
