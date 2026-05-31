@@ -13,7 +13,11 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Labrada&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Labrada&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="preload" as="image" href="images/deer.png" />
     <link rel="preload" as="image" href="images/man.png" />
@@ -24,8 +28,12 @@
       <div class="content">
         <h1 class="heading">ASafaeirad</h1>
         <p class="description">
-          <a href="https://www.github.com/asafaeirad/" target="_blank">GitHub</a>
-          <a href="https://www.linkedin.com/in/asafaeirad/" target="_blank">LinkedIn</a>
+          <a href="https://www.github.com/asafaeirad/" target="_blank"
+            >GitHub</a
+          >
+          <a href="https://www.linkedin.com/in/asafaeirad/" target="_blank"
+            >LinkedIn</a
+          >
         </p>
       </div>
       <div class="man"><img src="/images/man.png" alt="Man" /></div>
@@ -41,7 +49,12 @@
             result="noise"
             seed="0"
           />
-          <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="1" />
+          <feDisplacementMap
+            id="displacement"
+            in="SourceGraphic"
+            in2="noise"
+            scale="1"
+          />
         </filter>
         <filter id="squiggly-1">
           <feTurbulence
@@ -55,7 +68,13 @@
         </filter>
 
         <filter id="squiggly-2">
-          <feTurbulence id="turbulence" baseFrequency="1" numOctaves="3" result="noise" seed="2" />
+          <feTurbulence
+            id="turbulence"
+            baseFrequency="1"
+            numOctaves="3"
+            result="noise"
+            seed="2"
+          />
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" />
         </filter>
         <filter id="squiggly-3">

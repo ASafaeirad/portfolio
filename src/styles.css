@@ -1,10 +1,10 @@
 @layer base {
   :root {
     --color-bg: #c6c6c6;
-    --color-fg: hsl(0 0% 8%);
+    --color-fg: hsl(340, 17%, 7%);
     --color-light: 255 255 255;
     --font-serif: "Labrada", serif;
-    --font-sans-serif: "Inter", sans-serif;
+    --font-sans-serif: "Labrada", sans-serif;
 
     --color-shadow: hsl(0 0% 100%);
     --color-shadow-2: hsl(130deg 100% 70%);
@@ -73,13 +73,15 @@
     grid-row: 1;
     filter: blur(var(--blur-man));
     will-change: filter;
-    translate: calc(80px + var(--pointer-x) * -1) calc(100px + var(--pointer-y) * -1);
+    translate: calc(80px + var(--pointer-x) * -1)
+      calc(100px + var(--pointer-y) * -1);
     width: 300px;
     pointer-events: none;
 
     @media (min-width: 510px) {
       width: 400px;
-      translate: calc(150px + var(--pointer-x) * -1) calc(200px + var(--pointer-y) * -1);
+      translate: calc(150px + var(--pointer-x) * -1)
+        calc(200px + var(--pointer-y) * -1);
     }
   }
 
@@ -100,7 +102,8 @@
       0 0 5px #fff,
       -10px 0 60px var(--color-shadow),
       10px 0 60px var(--color-shadow-2),
-      100px 100px 200px 70px color-mix(in hsl, var(--color-shadow-2) 40%, transparent);
+      100px 100px 200px 70px
+        color-mix(in hsl, var(--color-shadow-2) 40%, transparent);
 
     animation: move 3s infinite alternate ease-in-out;
 
