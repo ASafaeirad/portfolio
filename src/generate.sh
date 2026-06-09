@@ -31,7 +31,8 @@ GAP=-10
 
 ART=$(for ((i=0; i<FILE_LINES; i++)); do
     if [[ $i -le DEER_HEIGHT ]]; then
-        printf "%s" "${PRIMARY}${DEER_LINES[i]}${RESET}"
+        COLOR=$(tput setaf $((255 - i / 2)))
+        printf "%s" "${COLOR}${DEER_LINES[i]}${RESET}"
     fi
     if [[ $i -ge $MAN_OFFSET ]]; then
         MAN_LINE=${MAN[i - MAN_OFFSET]}
@@ -39,7 +40,7 @@ ART=$(for ((i=0; i<FILE_LINES; i++)); do
         if [[ $i -ge $DEER_HEIGHT ]]; then
           MAN_LINE_WIDTH=$MAN_LINE_WIDTH+${#MAN_LINE}+20
         fi
-        printf "%*s\n" $((DEER_WIDTH+MAN_LINE_WIDTH)) "${ACCENT}${MAN_LINE}${RESET}"
+        printf "%*s\n" $((DEER_WIDTH+MAN_LINE_WIDTH)) "${PRIMARY}${MAN_LINE}${RESET}"
     else
         printf "\n"
     fi
@@ -47,7 +48,7 @@ done)
 
 BOX=$(cat <<EOF
 
-                          Hi 👋,  name is ${BOLD}${PRIMARY}Alireza.${RESET}
+                        Hi 👋, My name is ${BOLD}${PRIMARY}Alireza.${RESET}
 
    ${ITALIC}   a software engineer with +15 years of professional experience${RESET}
    ${ITALIC}I'm curious and passionate about learning, and crafting new things.${RESET}
